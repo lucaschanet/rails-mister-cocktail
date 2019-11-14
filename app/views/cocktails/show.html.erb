@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1><%= @cocktail.name %></h1>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">Dose</th>
+            <% @cocktail.doses.each do |dose| %>
+            <td><%= dose.description %></td>
+            <td><%= link_to "Delete", dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %></td>
+            <% end %>
+          </tr>
+          <tr>
+            <th scope="row">Ingredient</th>
+            <% @cocktail.ingredients.each do |ingredient| %>
+            <td><%= ingredient.name %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <%= link_to "Add a new Dose", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+
